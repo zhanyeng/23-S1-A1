@@ -118,6 +118,7 @@ class JSONTestRunner(object):
             if stopTestRun is not None:
                 stopTestRun()
 
+        self.json_data["testcases"].sort(key=lambda x: x["name"])
         json.dump(self.json_data, self.stream, indent=4)
         self.stream.write('\n')
         return result

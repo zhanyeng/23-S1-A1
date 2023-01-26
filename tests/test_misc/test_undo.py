@@ -7,9 +7,9 @@ from layers import green, red, blue
 from layer_util import LAYERS
 from grid import Grid
 
-class TestReplay(unittest.TestCase):
+class TestUndo(unittest.TestCase):
 
-    @number("5.1")
+    @number("4.1")
     def test_basic(self):
         grid = Grid(Grid.DRAW_STYLE_SET, 10, 10, LAYERS)
         control_grid = Grid(Grid.DRAW_STYLE_SET, 10, 10, LAYERS)
