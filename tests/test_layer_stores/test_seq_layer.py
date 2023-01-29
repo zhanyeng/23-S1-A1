@@ -3,13 +3,12 @@ from ed_utils.decorators import number
 
 from layer_store import SequenceLayerStore
 from layers import black, lighten, rainbow, invert
-from layer_util import LAYERS
 
 class TestSeqLayer(unittest.TestCase):
 
     @number("2.1")
     def test_no_layer(self):
-        s = SequenceLayerStore(LAYERS)
+        s = SequenceLayerStore()
         for color in [
             (255, 255, 255),
             (0, 0, 0),
@@ -19,7 +18,7 @@ class TestSeqLayer(unittest.TestCase):
 
     @number("2.2")
     def test_layers(self):
-        s = SequenceLayerStore(LAYERS)
+        s = SequenceLayerStore()
         s.add(black)
         # Light comes after black.
         s.add(lighten)
@@ -31,7 +30,7 @@ class TestSeqLayer(unittest.TestCase):
 
     @number("2.3")
     def test_erase(self):
-        s = SequenceLayerStore(LAYERS)
+        s = SequenceLayerStore()
         s.add(black)
         s.add(lighten)
         s.erase(lighten)
@@ -39,7 +38,7 @@ class TestSeqLayer(unittest.TestCase):
 
     @number("2.4")
     def test_special(self):
-        s = SequenceLayerStore(LAYERS)
+        s = SequenceLayerStore()
         s.add(invert)
         s.add(lighten)
         s.add(rainbow)
@@ -57,7 +56,7 @@ class TestSeqLayer(unittest.TestCase):
 
     @number("2.5")
     def test_example(self):
-        s = SequenceLayerStore(LAYERS)
+        s = SequenceLayerStore()
         s.add(rainbow)
         s.add(invert)
         self.assertEqual(s.get_color((100, 100, 100), 7, 0, 0), (255-91, 255-214, 255-104))

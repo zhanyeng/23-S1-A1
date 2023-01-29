@@ -2,8 +2,8 @@ import arcade
 import arcade.key as keys
 import math
 from grid import Grid
-from layer_util import LAYERS, Layer
-from layers import lighten # Used in select animation.
+from layer_util import get_layers, Layer
+from layers import lighten
 
 class MyWindow(arcade.Window):
     """ Painter Window """
@@ -104,7 +104,7 @@ class MyWindow(arcade.Window):
         """Draw everything"""
         self.clear()
         # UI - Layers
-        for i, layer in enumerate(LAYERS):
+        for i, layer in enumerate(get_layers()):
             if layer is None: break
             xstart = (i % 2) * self.LAYER_BUTTON_SIZE + self.DRAW_PANEL
             xend = ((i % 2)+1) * self.LAYER_BUTTON_SIZE + self.DRAW_PANEL
@@ -137,7 +137,7 @@ class MyWindow(arcade.Window):
             if not self.enable_ui:
                 return
             # Buttons
-            for i, layer in enumerate(LAYERS):
+            for i, layer in enumerate(get_layers()):
                 if layer is None: break
                 xstart = (i % 2) * self.LAYER_BUTTON_SIZE + self.DRAW_PANEL
                 xend = ((i % 2)+1) * self.LAYER_BUTTON_SIZE + self.DRAW_PANEL
@@ -191,7 +191,7 @@ class MyWindow(arcade.Window):
         """Called when the mouse moves."""
         if not self.dragging:
             return
-        if not(0 <= self.selected_layer_index < len(LAYERS)):
+        if not(0 <= self.selected_layer_index < len(get_layers())):
             return
         if x > self.DRAW_PANEL:
             return
@@ -217,7 +217,7 @@ class MyWindow(arcade.Window):
 
     def try_draw(self, x, y) -> None:
         """Attempt to draw at a position, but safely fail if an invalid square."""
-        layer = LAYERS[self.selected_layer_index]
+        layer = get_layers()[self.selected_layer_index]
         if self.prev_pos is not None:
             # Try draw in increments of 0.5 to avoid skipping squares.
             mhat_dist = abs(x - self.prev_pos[0]) + abs(y - self.prev_pos[1])

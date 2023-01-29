@@ -3,13 +3,12 @@ from ed_utils.decorators import number
 
 from layer_store import AdditiveLayerStore
 from layers import black, lighten, rainbow, invert
-from layer_util import LAYERS
 
 class TestAddLayer(unittest.TestCase):
 
     @number("1.1")
     def test_no_layer(self):
-        s = AdditiveLayerStore(LAYERS)
+        s = AdditiveLayerStore()
         for color in [
             (255, 255, 255),
             (0, 0, 0),
@@ -19,7 +18,7 @@ class TestAddLayer(unittest.TestCase):
 
     @number("1.2")
     def test_layers(self):
-        s = AdditiveLayerStore(LAYERS)
+        s = AdditiveLayerStore()
         s.add(black)
         self.assertEqual(s.get_color((20, 20, 20), 40, 0, 0), (0, 0, 0))
         # This should light the black, not the background.
@@ -28,7 +27,7 @@ class TestAddLayer(unittest.TestCase):
 
     @number("1.3")
     def test_erase(self):
-        s = AdditiveLayerStore(LAYERS)
+        s = AdditiveLayerStore()
         s.add(black)
         s.add(lighten)
         s.erase(lighten)
@@ -36,7 +35,7 @@ class TestAddLayer(unittest.TestCase):
 
     @number("1.4")
     def test_special(self):
-        s = AdditiveLayerStore(LAYERS)
+        s = AdditiveLayerStore()
         s.add(lighten)
         s.add(rainbow)
         s.add(black)
@@ -51,7 +50,7 @@ class TestAddLayer(unittest.TestCase):
 
     @number("1.5")
     def test_example(self):
-        s = AdditiveLayerStore(LAYERS)
+        s = AdditiveLayerStore()
         s.add(rainbow)
         self.assertEqual(s.get_color((100, 100, 100), 7, 0, 0), (91, 214, 104))
         s.add(lighten)

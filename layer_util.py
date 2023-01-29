@@ -44,8 +44,15 @@ def register(func):
 
     Usage:  @register
             def my_special_layer(...):
+
+    In order to actually confirm this registration,
+    you'll need to import the file containing the layer definition
     """
     global cur_layer_index
     LAYERS[cur_layer_index] = Layer(cur_layer_index, func)
     cur_layer_index += 1
     return LAYERS[cur_layer_index-1]
+
+def get_layers():
+    import layers # Force all registrations to occur.
+    return LAYERS
