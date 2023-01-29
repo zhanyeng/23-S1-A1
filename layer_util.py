@@ -27,15 +27,20 @@ class Layer:
 class background(object):
     """Simple decorator to add a __bg__ property to a layer
 
-    Usage:  @background(200, 0, 120)
-            @register
+    Usage:  @register
+            @background(200, 0, 120)
             def my_special_layer(...):
     """
     def __init__(self, r, g, b):
         self.val = (r, g, b)
 
-    def __call__(self, layer: function):
-        layer.__bg__ = self.val
+    def __call__(self, layer: function|Layer):
+        # This could be applied before or after registration
+        if isinstance(layer, Layer):
+            func = layer.apply
+        else:
+            func = layer
+        func.__bg__ = self.val
         return layer
 
 def register(func):
