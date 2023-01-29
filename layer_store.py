@@ -1,13 +1,11 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from layer_util import Layer
-from layers import invert
-from datatypes.referential_array import ArrayR
 
 class LayerStore(ABC):
 
-    def __init__(self, layers: ArrayR[Layer]) -> None:
-        self.layers = layers
+    def __init__(self) -> None:
+        pass
 
     @abstractmethod
     def add(self, layer: Layer) -> bool:

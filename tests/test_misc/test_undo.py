@@ -4,15 +4,14 @@ from ed_utils.decorators import number
 from action import PaintAction, PaintStep
 from undo import UndoTracker
 from layers import green, red, blue
-from layer_util import LAYERS
 from grid import Grid
 
 class TestUndo(unittest.TestCase):
 
     @number("4.1")
     def test_basic(self):
-        grid = Grid(Grid.DRAW_STYLE_SET, 10, 10, LAYERS)
-        control_grid = Grid(Grid.DRAW_STYLE_SET, 10, 10, LAYERS)
+        grid = Grid(Grid.DRAW_STYLE_SET, 10, 10)
+        control_grid = Grid(Grid.DRAW_STYLE_SET, 10, 10)
 
         steps1 = [PaintStep((4, 4), green), PaintStep((4, 5), green), PaintStep((5, 4), green)]
         steps2 = [PaintStep((5, 5), red), PaintStep((4, 4), red)]

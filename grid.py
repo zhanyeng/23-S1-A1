@@ -15,18 +15,30 @@ class Grid:
     MAX_BRUSH = 5
     MIN_BRUSH = 0
 
-    def __init__(self, draw_style, x, y, layers: ArrayR[Layer]) -> None:
+    def __init__(self, draw_style, x, y) -> None:
         """
         Initialise the grid object.
         - draw_style:
             The style with which colours will be drawn.
             Should be one of DRAW_STYLE_OPTIONS
         - x, y: The dimensions of the grid.
-        - num_layers: The number of layers that the window has access to.
+
+        Should also intialise the brush size to the DEFAULT provided as a class variable.
         """
+        raise NotImplementedError()
 
     def increase_brush_size(self):
+        """
+        Increases the size of the brush by 1,
+        if the brush size is already MAX_BRUSH,
+        then do nothing.
+        """
         raise NotImplementedError()
 
     def decrease_brush_size(self):
+        """
+        Decreases the size of the brush by 1,
+        if the brush size is already MIN_BRUSH,
+        then do nothing.
+        """
         raise NotImplementedError()

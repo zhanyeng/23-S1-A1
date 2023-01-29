@@ -40,7 +40,7 @@ class MyWindow(arcade.Window):
 
     def reset(self) -> None:
         """Reset the screen."""
-        self.grid = Grid(self.draw_style, self.GRID_SIZE_X, self.GRID_SIZE_Y, LAYERS)
+        self.grid = Grid(self.draw_style, self.GRID_SIZE_X, self.GRID_SIZE_Y)
         self.timestamp = 0
 
         self.selected_layer_index = -1
@@ -246,7 +246,7 @@ class MyWindow(arcade.Window):
     def start_replay(self) -> None:
         """Begin the replay mode."""
         self.enable_ui = False
-        self.grid = Grid(self.draw_style, self.GRID_SIZE_X, self.GRID_SIZE_Y, LAYERS)
+        self.grid = Grid(self.draw_style, self.GRID_SIZE_X, self.GRID_SIZE_Y)
         self.replay_timer = self.REPLAY_TIMER_DELTA
         self.on_replay_start()
 
