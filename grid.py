@@ -1,6 +1,4 @@
 from __future__ import annotations
-from datatypes.referential_array import ArrayR
-from layer_util import Layer
 class Grid:
     DRAW_STYLE_SET = "SET"
     DRAW_STYLE_ADD = "ADD"
@@ -21,6 +19,7 @@ class Grid:
         - draw_style:
             The style with which colours will be drawn.
             Should be one of DRAW_STYLE_OPTIONS
+            This draw style determines the LayerStore used on each grid square.
         - x, y: The dimensions of the grid.
 
         Should also intialise the brush size to the DEFAULT provided as a class variable.
