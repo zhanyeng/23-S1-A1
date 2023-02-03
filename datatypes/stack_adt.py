@@ -55,7 +55,7 @@ class ArrayStack(Stack[T]):
          length (int): number of elements in the stack (inherited)
          array (ArrayR[T]): array storing the elements of the queue
 
-    ArrayR cannot create empty arrays. So MIN_CAPCITY used to avoid this.
+    ArrayR cannot create empty arrays. So MIN_CAPACITY used to avoid this.
     """
     MIN_CAPACITY = 1
 

@@ -50,10 +50,10 @@ class CircularQueue(Queue[T]):
     Attributes:
          length (int): number of elements in the stack (inherited)
          front (int): index of the element at the front of the queue
-         rear (int): index of the first empty space at the oback of the queue
+         rear (int): index of the first empty space at the back of the queue
          array (ArrayR[T]): array storing the elements of the queue
 
-    ArrayR cannot create empty arrays. So MIN_CAPCITY used to avoid this.
+    ArrayR cannot create empty arrays. So MIN_CAPACITY used to avoid this.
     """
     MIN_CAPACITY = 1
 
@@ -67,7 +67,7 @@ class CircularQueue(Queue[T]):
     def append(self, item: T) -> None:
         """ Adds an element to the rear of the queue.
         :pre: queue is not full
-        :raises Exception: if the queueu is full
+        :raises Exception: if the queue is full
         """
         if self.is_full():
             raise Exception("Queue is full")
