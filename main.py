@@ -293,7 +293,7 @@ class MyWindow(arcade.Window):
 
     def on_paint(self, layer: Layer, px, py):
         """
-        Called when a grid square is painted on.
+        Called when a grid square is clicked on, which should trigger painting in the vicinity.
         layer: The layer being applied.
         px: x position of the brush.
         py: y position of the brush.
