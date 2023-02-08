@@ -46,7 +46,7 @@ class ArraySortedList(SortedList[T]):
             self._shuffle_right(index)
             self.array[index] = item
         else:
-            # the list isn't empty and the item's position is wrong wrt. its neighbourghs
+            # the list isn't empty and the item's position is wrong wrt. its neighbours
             raise IndexError('Element should be inserted in sorted order')
 
     def __contains__(self, item: ListItem):
