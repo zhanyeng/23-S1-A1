@@ -41,9 +41,9 @@ if __name__ == "__main__":
     r.add_action(action2, is_undo=True)
     # Start the replay.
     r.start_replay()
-    t1 = r.play_next_action() # action 1, special
-    t2 = r.play_next_action() # action 2, draw
-    t3 = r.play_next_action() # action 2, undo
-    f = r.play_next_action()  # False, nothing to do.
-    assert (t1, t2, t3, f) == (True, True, True, False)
+    f1 = r.play_next_action() # action 1, special
+    f2 = r.play_next_action() # action 2, draw
+    f3 = r.play_next_action() # action 2, undo
+    t = r.play_next_action()  # True, nothing to do.
+    assert (f1, f2, f3, t) == (False, False, False, True)
 
