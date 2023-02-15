@@ -1,5 +1,6 @@
 from __future__ import annotations
 from action import PaintAction
+from grid import Grid
 
 class ReplayTracker:
 
@@ -21,7 +22,7 @@ class ReplayTracker:
         """
         pass
 
-    def play_next_action(self, grid) -> None:
+    def play_next_action(self, grid: Grid) -> bool:
         """
         Plays the next replay action on the grid.
         Returns a boolean.
@@ -34,6 +35,8 @@ if __name__ == "__main__":
     action1 = PaintAction([], is_special=True)
     action2 = PaintAction([])
 
+    g = Grid(Grid.DRAW_STYLE_SET, 5, 5)
+
     r = ReplayTracker()
     # add all actions
     r.add_action(action1)
@@ -41,9 +44,9 @@ if __name__ == "__main__":
     r.add_action(action2, is_undo=True)
     # Start the replay.
     r.start_replay()
-    f1 = r.play_next_action() # action 1, special
-    f2 = r.play_next_action() # action 2, draw
-    f3 = r.play_next_action() # action 2, undo
-    t = r.play_next_action()  # True, nothing to do.
+    f1 = r.play_next_action(g) # action 1, special
+    f2 = r.play_next_action(g) # action 2, draw
+    f3 = r.play_next_action(g) # action 2, undo
+    t = r.play_next_action(g)  # True, nothing to do.
     assert (f1, f2, f3, t) == (False, False, False, True)
 
