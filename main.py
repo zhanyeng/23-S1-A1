@@ -217,6 +217,8 @@ class MyWindow(arcade.Window):
 
     def try_draw(self, x, y) -> None:
         """Attempt to draw at a position, but safely fail if an invalid square."""
+        if self.selected_layer_index == -1:
+            return
         layer = get_layers()[self.selected_layer_index]
         if self.prev_pos is not None:
             # Try draw in increments of 0.5 to avoid skipping squares.
