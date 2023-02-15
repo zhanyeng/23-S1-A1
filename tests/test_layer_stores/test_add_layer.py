@@ -6,7 +6,7 @@ from layers import black, lighten, rainbow, invert
 
 class TestAddLayer(unittest.TestCase):
 
-    @number("1.1")
+    @number("2.1")
     def test_no_layer(self):
         s = AdditiveLayerStore()
         for color in [
@@ -16,7 +16,7 @@ class TestAddLayer(unittest.TestCase):
         ]:
             self.assertEqual(s.get_color(color, 0, 1, 1), color)
 
-    @number("1.2")
+    @number("2.2")
     def test_layers(self):
         s = AdditiveLayerStore()
         s.add(black)
@@ -25,7 +25,7 @@ class TestAddLayer(unittest.TestCase):
         s.add(lighten)
         self.assertEqual(s.get_color((100, 100, 100), 0, 20, 40), (40, 40, 40))
 
-    @number("1.3")
+    @number("2.3")
     def test_erase(self):
         s = AdditiveLayerStore()
         s.add(black)
@@ -33,7 +33,7 @@ class TestAddLayer(unittest.TestCase):
         s.erase(lighten)
         self.assertEqual(s.get_color((25, 25, 25), 7, 0, 0), (65, 65, 65))
 
-    @number("1.4")
+    @number("2.4")
     def test_special(self):
         s = AdditiveLayerStore()
         s.add(lighten)
@@ -48,7 +48,7 @@ class TestAddLayer(unittest.TestCase):
         s.special()
         self.assertEqual(s.get_color((100, 100, 100), 7, 0, 0), (91, 214, 104))
 
-    @number("1.5")
+    @number("2.5")
     def test_example(self):
         s = AdditiveLayerStore()
         s.add(rainbow)

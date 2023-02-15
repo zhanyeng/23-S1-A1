@@ -6,7 +6,7 @@ from layers import black, lighten, rainbow, invert
 
 class TestSetLayer(unittest.TestCase):
 
-    @number("3.1")
+    @number("1.1")
     def test_no_layer(self):
         s = SetLayerStore()
         for color in [
@@ -16,7 +16,7 @@ class TestSetLayer(unittest.TestCase):
         ]:
             self.assertEqual(s.get_color(color, 0, 1, 1), color)
 
-    @number("3.2")
+    @number("1.2")
     def test_layers(self):
         s = SetLayerStore()
         s.add(black)
@@ -25,14 +25,14 @@ class TestSetLayer(unittest.TestCase):
         s.add(lighten)
         self.assertEqual(s.get_color((100, 100, 100), 0, 20, 40), (140, 140, 140))
 
-    @number("3.3")
+    @number("1.3")
     def test_erase(self):
         s = SetLayerStore()
         s.add(black)
         s.erase(lighten)
         self.assertEqual(s.get_color((25, 25, 25), 24, 4, 100), (25, 25, 25))
 
-    @number("3.4")
+    @number("1.4")
     def test_special(self):
         s = SetLayerStore()
         s.add(lighten)
@@ -42,7 +42,7 @@ class TestSetLayer(unittest.TestCase):
         s.special()
         self.assertEqual(s.get_color((100, 100, 100), 0, 0, 0), (140, 140, 140))
 
-    @number("3.5")
+    @number("1.5")
     def test_example(self):
         s = SetLayerStore()
         s.add(rainbow)

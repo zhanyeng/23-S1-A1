@@ -6,7 +6,7 @@ from layers import black, lighten, rainbow, invert
 
 class TestSeqLayer(unittest.TestCase):
 
-    @number("2.1")
+    @number("3.1")
     def test_no_layer(self):
         s = SequenceLayerStore()
         for color in [
@@ -16,7 +16,7 @@ class TestSeqLayer(unittest.TestCase):
         ]:
             self.assertEqual(s.get_color(color, 0, 1, 1), color)
 
-    @number("2.2")
+    @number("3.2")
     def test_layers(self):
         s = SequenceLayerStore()
         s.add(black)
@@ -28,7 +28,7 @@ class TestSeqLayer(unittest.TestCase):
         # Rainbow comes before black.
         self.assertEqual(s.get_color((20, 20, 20), 7, 0, 0), (0, 0, 0))
 
-    @number("2.3")
+    @number("3.3")
     def test_erase(self):
         s = SequenceLayerStore()
         s.add(black)
@@ -36,7 +36,7 @@ class TestSeqLayer(unittest.TestCase):
         s.erase(lighten)
         self.assertEqual(s.get_color((25, 25, 25), 7, 0, 0), (0, 0, 0))
 
-    @number("2.4")
+    @number("3.4")
     def test_special(self):
         s = SequenceLayerStore()
         s.add(invert)
@@ -54,7 +54,7 @@ class TestSeqLayer(unittest.TestCase):
                     # Remove: Black
         self.assertEqual(s.get_color((100, 100, 100), 7, 0, 0), (91, 214, 104))
 
-    @number("2.5")
+    @number("3.5")
     def test_example(self):
         s = SequenceLayerStore()
         s.add(rainbow)
