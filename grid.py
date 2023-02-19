@@ -41,3 +41,9 @@ class Grid:
         then do nothing.
         """
         raise NotImplementedError()
+
+    def special(self):
+        """
+        Activate the special affect on all grid squares.
+        """
+        raise NotImplementedError()
