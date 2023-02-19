@@ -296,6 +296,8 @@ class MyWindow(arcade.Window):
     def on_paint(self, layer: Layer, px, py):
         """
         Called when a grid square is clicked on, which should trigger painting in the vicinity.
+        Vicinity squares outside of the range [0, GRID_SIZE_X) or [0, GRID_SIZE_Y) can be safely ignored.
+
         layer: The layer being applied.
         px: x position of the brush.
         py: y position of the brush.
@@ -332,24 +334,6 @@ class MyWindow(arcade.Window):
     def on_decrease_brush_size(self):
         """Called when a decrease to the brush size is requested."""
         self.grid.decrease_brush_size()
-
-def test_on_screen_init(window: MyWindow):
-    import time
-    from layers import rainbow
-    # Change draw mode to additive.
-    window.change_draw_mode()
-    window.on_increase_brush_size()
-    # Paint
-    window.on_paint(rainbow, 8, 8)
-    time.sleep(1)
-    window.on_paint(lighten, 10, 8)
-    time.sleep(1)
-    window.on_paint(lighten, 6, 8)
-    time.sleep(1)
-    window.on_decrease_brush_size()
-    window.on_decrease_brush_size()
-    window.on_decrease_brush_size()
-    window.on_paint(rainbow, 16, 16)
 
 def main():
     """ Main function """
